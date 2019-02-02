@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.dataTables.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/odometer-theme-car.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/jqcloud.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
+        <title>DS</title>
+    {% endblock %}
+</head>
+<body>
+<div id="container">
+
+    {% block navigation %}
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url_for('index') }}"><img
+                            src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                       
+                        {% if selected_menu_item == "q3" %}
+                            <li class="active"><a href="#">Information</a></li>
+                        {% else %}
+                            <li><a href="#">Informations</a></li>
+                            
+                        {% endif %}
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="footer">
+        Younes JAOUIRI &ensp; &ensp; - &ensp; &ensp; Mohammed BASTA &ensp; &ensp; - &ensp; &ensp; Statistiques &ensp;
+        &ensp; - &ensp; &ensp; Master DS &ensp; &ensp; - &ensp; &ensp; 2017/2018
+    </div>
+</div>
+
+
+{% block scripts %}
+{#    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>#}
+{# <script lang="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>#}
+
+<script lang="text/javascript" src="{{ url_for('static',filename='script/bootstrap.min.js') }}"></script>			
+{# <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>#}
+  <script lang="text/javascript" src="{{ url_for('static', filename='script/easing.min.js') }}"></script>			
+<script lang="text/javascript" src="{{ url_for('static', filename='script/hoverIntent.js') }}"></script>
+<script lang="text/javascript" src="{{ url_for('static', filename='script/superfish.min.js') }}"></script>	
+<script lang="text/javascript" src="{{ url_for('static', filename='script/jquery.ajaxchimp.min.js') }}"></script>
+<script lang="text/javascript" src="{{ url_for('static', filename='script/jquery.magnific-popup.min.js') }}"></script>	
+<script lang="text/javascript" src="{{ url_for('static', filename='script/owl.carousel.min.js') }}"></script>	
+<script lang="text/javascript" src="{{ url_for('static', filename='script/hexagons.min.js') }}"></script>							
+<script lang="text/javascript" src="{{ url_for('static', filename='script/jquery.nice-select.min.js') }}"></script>	
+<script lang="text/javascript" src="{{ url_for('static', filename='script/jquery.counterup.min.js') }}"></script>
+<script lang="text/javascript" src="{{ url_for('static', filename='script/waypoints.min.js') }}"></script>							
+<script lang="text/javascript" src="{{ url_for('static', filename='script/mail-script.js') }}"></script>	
+<script lang="text/javascript" src="{{ url_for('static', filename='script/main.js') }}"></script>
+{% endblock %}
+
+
+</body>
+</html>

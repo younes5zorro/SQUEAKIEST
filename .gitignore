@@ -1,0 +1,13 @@
+.ipynb_checkpoints/
+*.vec
+*.pkl
+*.h5
+arabic-dialects-id-master/
+ArabicDialects-master/
+data/
+arabish/.ipynb_checkpoints/
+data_final.csv
+data_full.csv
+*.pickle
+*.sav
+models/

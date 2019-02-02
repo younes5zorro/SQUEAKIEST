@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Virtual Keyboard Language Layouts</title>
+
+	<!-- demo -->
+	<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='demo.css') }}" rel="stylesheet">
+
+	<!-- jQuery & jQuery UI + theme (required) -->
+	<link href="{{ url_for('static', filename='jquery-ui.min.css') }}" rel="stylesheet">
+	<script src="{{ url_for('static', filename='jquery-latest.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+	
+</head>
+<body>
+
+<div id="page-wrap">
+
+	<h1><a href="https://github.com/Mottie/Keyboard">Virtual Keyboard Greywyvern Language Layouts</a></h1>
+	<h3>"keyboard-layouts-greywyvern.js"</h3>
+	<h4>This is a work in progress.</h4>
+
+	<div class="block2">
+		<div class="row">
+			<div class="col-xs-4"></div>
+  		<div class="col-xs-4">
+				<select>
+					<optgroup label="Swedish Cars">
+						<option value="volvo">Volvo</option>
+						<option value="saab">Saab</option>
+					</optgroup>
+					<optgroup label="German Cars">
+						<option value="mercedes">Mercedes</option>
+						<option value="audi">Audi</option>
+					</optgroup>
+				</select>
+
+				<div style="height: 50px;"></div>
+			</div>
+		</div>
+
+		<h2></h2>
+		<input type="text" id="YourId" value=""  dir="rtl" class="keyboardInput"> 
+		<link rel="stylesheet" type="text/css" href="http://www.arabic-keyboard.org/keyboard/keyboard.css"> 
+		<script type="text/javascript" src="http://www.arabic-keyboard.org/keyboard/keyboard.js" charset="UTF-8"></script> 
+
+	</div>
+	
+	<div class="block22">
+		<div id="demo"></div>
+
+	</div>
+	<br class="clear" />
+
+	<div id="footer2">
+		<div>
+			All layouts in this file have been generated & modified from the<br>
+			<a href="//www.greywyvern.com/code/javascript/keyboard">Javascript Graphical / Virtual Keyboard Interface</a><br>
+			Copyright (c) 2014 - GreyWyvern<br>
+			Licenced for free distribution under the BSDL
+		</div>
+	</div>
+
+</div>
+<script src="https://cdn.zoomcharts-cloud.com/1/latest/zoomcharts.js"></script>
+<script>
+
+	function create_pie(model,txt) {
+		$.get("api/get/"+model+"/" + txt, function (data) {
+			console.log(data)
+			var pays = []
+			switch (data.value) {
+				case "general":
+					pays = ['MAR','ESH','DZA','TUN','LBY','MRT','EGY','IRQ','SAU','KWT','QAT','ARE','OMN','JOR','PSE','ISR','LBN','SYR','SDN','YEM'];
+					break;
+				case "egyptian":
+					pays = ['EGY'];
+					break;
+				case "gulf":
+					pays = ['SAU','KWT','QAT','ARE'];
+					break;
+				case "iraqi":
+					pays = ['IRQ'];
+					break;
+				case "levantine":
+				    pays = ['JOR','PSE','ISR','LBN','SYR'];
+
+					break;
+				case "maghrebi":
+					pays = ['MAR','ESH','DZA'];
+
+					break;
+				case "tunisien":
+					pays = ['TUN'];
+
+					break;
+				
+				}
+
+			var geio = new GeoChart({
+			container: document.getElementById('demo'),
+			navigation: {
+				initialLng: 15,
+				initialLat: 20.92,
+				initialZoom: 4,
+				minZoom: 3
+			},
+			data: {
+				url:"https://zoomcharts.com/dvsl/data/geo-chart/countries.geo.json",
+				format: "GeoJSON",
+				perBoundsData: false
+			},
+			layers: [
+				{
+					type: "shapes",
+					style: {
+						node: {
+							fillColor: "rgba(0, 153, 204, 0.2)",
+							lineColor: "rgba(255, 255, 255, 0.6)",
+							lineWidth: 1
+						},
+						selection: {
+							fillColor: "rgba(47, 195, 47, 0.7)"
+						}
+					}
+				}
+			],
+			interaction: {
+				selection: {
+					enabled: true
+				}
+			},
+			advanced: {
+				pointer: {
+					noClickOnDoubleClick: false
+				}
+			}
+		});
+		geio.on("selectionChange",function(e){
+			geio.selection(pays)
+		});	
+
+
+		$("#demo").hide().fadeIn(2000)
+		})
+	}
+	
+	$(function () {
+		create_pie("15", "هوا في ايه");
+		$('#select_region').on("change", function () {
+			if (this.value == "all") {
+				$('#pays_div').hide(1000);
+				create_pie("all", "all");
+				must_user("all", "all");
+			}
+			else {
+				$('#select_pays').empty();
+				$.get("/api/get_pays/" + this.value, function (data) {
+					$('#select_pays').append($('<option>', {
+						value: 'all',
+						text: 'All countries'
+					}));
+					$.each(data, function (i, item) {
+						$('#select_pays').append($('<option>', {
+							value: i,
+							text: item
+						}));
+					});
+				});
+				$('#pays_div').show(500);
+				create_pie("region", this.value);
+				must_user("region", this.value);
+			}
+		});
+		$('#select_pays').on("change", function () {
+			if (this.value == "all") {
+				var region = $('#select_region').val();
+				create_pie("region", this.value);
+				must_user("region", this.value);
+			}
+			else {
+
+				create_pie("pays", this.value);
+				must_user("pays", this.value);
+			}
+		});
+		$.get("/api/get_regions", function (data) {
+			$('#select_region').append($('<option>', {
+				value: 'all',
+				text: 'All regions'
+			}));
+			$.each(data, function (i, item) {
+				$('#select_region').append($('<option>', {
+					value: i,
+					text: item
+				}));
+			});
+			$('#select_region').trigger("change")
+		})
+	});
+	
+</script>
+
+</body>
+</html>
