@@ -104,7 +104,7 @@ encoder = preprocessing.LabelEncoder()
 encoder.fit(['egyptian', 'general', 'gulf', 'iraqi', 'levantine', 'maghrebi', 'tunisien'])
 
 def page_acceuil():
-    return render_template('home1.html')
+    return render_template('home3.html')
 
 def Modeling(txt,vec, model):
     loaded_vec = CountVectorizer(decode_error="replace",vocabulary=pickle.load(open("models/"+vec+".pkl", "rb")))

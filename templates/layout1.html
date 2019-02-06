@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}
+    <title>Arabic Dialect Detection</title>
+
+	<!-- demo -->
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet">
+
+	<!-- jQuery & jQuery UI + theme (required) -->
+	<script src="{{ url_for('static', filename='jquery-latest.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="http://www.arabic-keyboard.org/keyboard/keyboard.css"> 
+	<script type="text/javascript" src="http://www.arabic-keyboard.org/keyboard/keyboard.js" charset="UTF-8"></script> 
+	<script src="https://cdn.zoomcharts-cloud.com/1/latest/zoomcharts.js"></script>
+
+    {% endblock %}
+</head>
+<body>
+<div id="container">
+    <div class="bae" style="height: 35px;
+    margin-bottom: 32px;background-image: linear-gradient(#dddddd, white);">
+
+    </div>
+    <!-- {% block navigation %}
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                       
+                        {% if select == "dash" %}
+                                 <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='css/hmida.png') }}"  style="width: 35px;height: 36px;" alt=""></a></li>
+                                 <li> <a data-toggle="modal" data-target="#myModal123456789"><img src="{{ url_for('static', filename='css/hmida2.png') }}"  style="width: 35px;height: 36px;" alt="">  </a> </li>
+
+                        {% else %}
+                             <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='css/dash.png') }}"  style="width: 35px;height: 36px;" alt=""> </a></li>
+                            
+                        {% endif %}
+
+
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                            <li><a href="https://www.facebook.com/datasciencefssm/"> <img src="{{ url_for('static', filename='ds_green.png') }}"  style="height: 36px;" alt=""> </a></li>
+
+                        <li> <a href=""></a>  </li>
+                      </ul>
+
+                </div>
+            </div>
+        </nav>
+    {% endblock %} -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="bae" style="height: 35px;margin-top: 32px;background-image: linear-gradient(white ,#dddddd );">
+
+</div>
+
+
+{% block scripts %}
+
+{% endblock %}
+
+
+</body>
+</html>

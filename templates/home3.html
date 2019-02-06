@@ -1,0 +1,179 @@
+{% extends "layout1.html" %}
+
+{% block content %}
+	<div class="row">
+		<div class="sec1 col-md-4">
+			<img src="{{ url_for('static', filename='Capture.PNG') }}" style="width: 197px;
+			height: 67px;" alt="">
+		</div>
+	
+	</div>
+	<div class="row">
+		<div class="section1 col-md-10">
+				<div class="form-group col-md-12">
+					<textarea class="keyboardInput form-control txt" id="exampleFormControlTextarea1" rows="12"></textarea>
+				</div>
+				<div class="form-group col-md-8">
+				<select class="form-control custom-select custom-select-lg mb-3 model">
+						<optgroup label="Naive Bayes">
+							<option value="1">NB, Count Vectors</option>
+							<option value="2">NB, WordLevel TF-IDF</option>
+							<option value="3">NB, N-Gram Vectors</option>
+							<option value="4">NB, CharLevel Vectors</option>
+						</optgroup>
+						<optgroup label="Logistic Regression">
+							<option value="5">LR, Count Vectors</option>
+							<option value="6">LR, WordLevel TF-IDF</option>
+							<option value="7">LR, N-Gram Vectors</option>
+							<option value="8">LR, CharLevel Vectors</option>
+						</optgroup>
+						<optgroup label="Boosting Model">
+								<option value="9">Xgb, Count Vectors</option>
+								<option value="10">Xgb, WordLevel TF-IDF</option>
+								<option value="11">Xgb, CharLevel Vectors</option>
+						</optgroup>
+						<!-- <optgroup label="Support Vector Machine">
+							<option value="17">SVM, Count Vectors</option>
+							<option value="18">SVM, WordLevel TF-IDF</option>
+							<option value="19">SVM, N-Gram Vectors</option>
+						</optgroup>
+						<optgroup label="Random Forest">
+							<option value="20">RF, Count Vectors</option>
+							<option value="21">RF, WordLevel TF-IDF</option>
+						</optgroup> -->
+						<optgroup label="Neural Networks">
+								<option value="12">NN, Ngram Level TF IDF Vectors</option>
+						</optgroup>
+						<optgroup label="Convolutional Neural Network">
+								<option value="13">CNN, Word Embeddings</option>
+						</optgroup>
+						<optgroup label="Recurrent Neural Network ">
+								<option value="14">RNN-LSTM, Word Embeddings</option>
+								<option value="15">RNN-GRU, Word Embeddings</option>
+						</optgroup>
+				</select>
+				</div>
+				<div class="col-md-4">
+						<button class="btn col-md-12">Predict </button>
+				</div>
+	
+		</div>
+		<div class="col-md-2">
+			<img class="col-md-12" src="{{ url_for('static', filename='logo.png') }}" style="height: 260px;
+			width: 179px;" alt="">
+		</div>
+	</div>
+	</div>
+		
+		<div class="row block22">
+			<div id="demo"></div>
+	
+		</div>
+		<br class="clear" />
+	</div>
+{% endblock %}
+{% block scripts %}
+<script>
+		var ZoomChartsLicense = "ZCP-2jt1vsq8o: ZoomCharts SDK for PeaQock";
+		var ZoomChartsLicenseKey = '1a89ca2621b420a6ab144f910ccc8cf7895f869f01d4c4de4a' +
+		'aa67351f0416d83b09b7dea54d22a9c20a90783cf2796de366fd0a018f13790a36dc24cf7a1c5' +
+		'290870c84f74844621e4ab5229681bcb229dd2fc90aaa6454af1578c81fe2056c97c29cef15c1' +
+		'c606fc70e1fd7d89f978b7fe9d6e97387b2b16304a99f87c92729d821947c312144f1a8b6d57d' +
+		'ffd1448da030a3578143b62f1f4a0b0fe1d2efb1670416898d86369c5059d1db5acf457b07448' +
+		'3f24d4db6b98767566eafef4b259f9e59a12bd38ea15be4f2c3d681606c9f695032892c19091c' +
+		'a8d8af12f5dc21dbc6035dc647e945a17d39d67e17bbde56ce9311cab3d38d70e6db842771adc';
+			var geio = new GeoChart({
+			container: document.getElementById('demo'),
+			navigation: {
+				initialLng: 15,
+				initialLat: 20.92,
+				initialZoom: 4,
+				minZoom: 3
+			},
+			data: {
+				url:"https://zoomcharts.com/dvsl/data/geo-chart/countries.geo.json",
+				format: "GeoJSON",
+				perBoundsData: false
+			},
+			layers: [
+				{
+					type: "shapes",
+					style: {
+						node: {
+							fillColor: "rgba(0, 153, 204, 0.2)",
+							lineColor: "rgba(255, 255, 255, 0.6)",
+							lineWidth: 1
+						},
+						selection: {
+							// fillColor: "#eb8739"
+							fillColor: "rgba(82,192,132, 0.7)"
+						}
+					}
+				}
+			],
+			interaction: {
+				selection: {
+					enabled: false
+				}
+			},
+			advanced: {
+				pointer: {
+					noClickOnDoubleClick: false
+				}
+			}
+		});
+		
+		
+	
+	
+	$(function () {
+		
+		$(".btn").click(function() {
+				var txt = $(".txt").val();
+				var model = $(".model").val();
+			$.get("api/get/"+model+"/" + txt, function (data) {
+				console.log(data)
+				var pays = []
+
+				switch (data.value) {
+				case "general":
+					pays = ['MAR','ESH','DZA','TUN','LBY','MRT','EGY','IRQ','SAU','KWT','QAT','ARE','OMN','JOR','PSE','ISR','LBN','SYR','SDN','YEM'];
+					break;
+				case "egyptian":
+					pays = ['EGY'];
+					break;
+				case "gulf":
+					pays = ['SAU','KWT','QAT','ARE'];
+					break;
+				case "iraqi":
+					pays = ['IRQ'];
+					break;
+				case "levantine":
+				    pays = ['JOR','PSE','ISR','LBN','SYR'];
+
+					break;
+				case "maghrebi":
+					pays = ['MAR','ESH','DZA'];
+
+					break;
+				case "tunisien":
+					pays = ['TUN'];
+
+					break;
+				
+				}
+				// if(txt != data.txt ){
+				// 	$(".txt").val(txt + " => "  + data.txt)
+					
+				// }
+                geio.selection(pays)
+				$("#demo").hide().fadeIn(2000)
+			});	
+
+		});
+		
+	});
+	
+</script>
+
+{% endblock %}

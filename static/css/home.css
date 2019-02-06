@@ -1,0 +1,457 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+* {
+  box-sizing: border-box;
+}
+
+
+body
+ {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  /* background: url('movies.jpg') center/cover no-repeat; */
+
+  background-image: url(logo4_.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  /* background-color: #464646; */
+
+  /* color: #eb8739; */
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+.card {
+  float: left;
+  padding: 0 6px;
+  /* width: 50%; */
+}
+.card .menu-content {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.card .menu-content::before, .card .menu-content::after {
+  content: "";
+  display: table;
+}
+.card .menu-content::after {
+  clear: both;
+}
+.card .menu-content li {
+  display: inline-block;
+}
+.card .menu-content a {
+  color: #fff;
+}
+.card .menu-content span {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: "Open Sans";
+  transform: translate(-50%, 0);
+}
+.card .wrapper {
+  background-color: #fff;
+  height: 275px;
+  width: 175px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+}
+.card .wrapper:hover .data {
+  transform: translateY(0);
+}
+.card .data {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(calc(70px + 1em));
+  transition: transform 0.3s;
+}
+.card .data .content {
+  padding: 1em;
+  position: relative;
+  z-index: 1;
+}
+.card .author {
+  font-size: 12px;
+}
+.card .title {
+  margin-top: 10px;
+  overflow: hidden;
+}
+/* .card .text {
+  height: 70px;
+  margin: 0;
+} */
+/* .card input[type=checkbox] {
+  display: none;
+}
+.card input[type=checkbox]:checked + .menu-content {
+  transform: translateY(-60px);
+} */
+
+.example-2 .wrapper {
+  background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center/cover no-repeat;
+}
+.example-2 .wrapper:hover .menu-content span {
+  transform: translate(-50%, -10px);
+  opacity: 1;
+}
+.example-2 .header {
+  color: #fff;
+  padding: 1em;
+}
+.example-2 .header::before, .example-2 .header::after {
+  content: "";
+  display: table;
+}
+.example-2 .header::after {
+  clear: both;
+}
+.example-2 .header .date {
+  float: left;
+  font-size: 12px;
+}
+.example-2 .menu-content {
+  float: right;
+}
+.example-2 .menu-content li {
+  margin: 0 5px;
+  position: relative;
+}
+.example-2 .menu-content span {
+  transition: all 0.3s;
+  opacity: 0;
+}
+.example-2 .data {
+  color: #fff;
+  transform: translateY(calc(70px + 4em));
+}
+.example-2 .title ,.author{
+  color: #fff;
+}
+.example-2 .button {
+  display: block;
+  width: 100px;
+  margin: 2em auto 1em;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  line-height: 1;
+  position: relative;
+  font-weight: 700;
+}
+.example-2 .button::after {
+  content: "→";
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: all 0.3s;
+}
+.example-2 .button:hover::after {
+  transform: translate(5px, -50%);
+  opacity: 1;
+}
+
+span.star {
+    display: inline-block;
+    margin-right: 12px;
+    color: #F0DE00;
+    font-size: 36px;
+  }
+
+  @charset "UTF-8";
+  * {
+    box-sizing: border-box;
+  }
+  
+  .moviecard {
+    font-family: 'Helvetica', sans-serif, 'Ariel';
+    position: relative;
+    background: #ffffff;
+    color: #555555;
+    margin: 50px auto;
+    width: 850px;
+    max-width: 900px;
+    min-height: 300px;
+    padding: 30px 290px 30px 30px;
+    -moz-box-shadow: -5px 5px 15px;
+    -webkit-box-shadow: -5px 5px 15px;
+    box-shadow: -5px 5px 15px;
+    border-radius: 5px;
+  }
+  .moviecard #movie-content {
+    opacity: 1;
+    width: 100%;
+    display: table;
+    transition: all 500ms ease-out;
+    position: relative;
+  }
+  .moviecard .movie-title {
+    font-size: 36px;
+    padding-bottom: 6px;
+    color: #333333;
+  }
+  .moviecard .movie-title .movie-year {
+    margin-left: 12px;
+    font-size: 16px;
+  }
+  .moviecard .movie-title a {
+    color: #333333;
+    text-decoration: none;
+  }
+  .moviecard .movie-title a:hover {
+    color: #858585;
+  }
+  .moviecard .movie-details {
+    font-size: 12px;
+    padding-bottom: 24px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #dbdbdb;
+  }
+  .moviecard .movie-details span {
+    padding: 0px 6px;
+    border-right: 1px solid #dbdbdb;
+  }
+  .moviecard .movie-details span:last-child {
+    border: none;
+  }
+  .moviecard .movie-castcrew {
+    padding-top: 12px;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .moviecard .movie-castcrew span.title {
+    color: #333333;
+    display: inline-block;
+    width: 80px;
+    font-weight: 600;
+  }
+  .moviecard .movie-synopsis {
+    margin: 24px 0px;
+    padding-top: 24px;
+    border-top: 1px solid #dbdbdb;
+    max-height: 130px;
+    height: 130px;
+    overflow-y: hidden;
+    width: 100%;
+  }
+  .moviecard .movie-ratings {
+    position: absolute;
+    left: 24%;
+    top: 13%;
+  }
+  .moviecard .movie-ratings span.star {
+    display: inline-block;
+    margin-right: 12px;
+    color: #F0DE00;
+    font-size: 36px;
+  }
+  .moviecard .movie-ratings span.score {
+    font-size: 30px;
+    color: #333333;
+  }
+  .moviecard .movie-trailer-btn {
+    text-transform: uppercase;
+    outline: none;
+    padding: 15px 50px;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .moviecard .movie-trailer-btn:hover {
+    text-decoration: underline;
+  }
+  .moviecard .movie-trailer-btn:hover:before {
+    color: #333333;
+  }
+  .moviecard .movie-trailer-btn:hover:after {
+    border-color: #333333;
+  }
+  .moviecard .movie-trailer-btn:before {
+    content: '▸';
+    font-size: 30px;
+    color: #333333;
+    position: absolute;
+    top: 2px;
+    left: 20px;
+  }
+  .moviecard .movie-trailer-btn:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 1px solid #333333;
+    border-radius: 50%;
+    position: absolute;
+    left: 18px;
+    top: 12px;
+  }
+  .moviecard .movie-trailer {
+    width: 0px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    transition: all 500ms;
+    top: 0px;
+    background: #ffffff;
+    z-index: 1;
+    padding: 60px 40px 60px 60px;
+    border-radius: 5px;
+  }
+  .moviecard .movie-trailer a.back-btn {
+    color: #333333;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 12px 6px 18px;
+    position: absolute;
+    top: 12px;
+    left: 300px;
+    text-transform: uppercase;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .moviecard .movie-trailer a.back-btn:before {
+    content: '⌜';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    transform: rotate(-45deg);
+    font-size: 20px;
+  }
+  .moviecard .movie-trailer a.back-btn:hover {
+    color: #333;
+  }
+  .moviecard .movie-trailer iframe {
+    width: 100%;
+    height: 100%;
+  }
+  .moviecard .movie-poster {
+    position: absolute;
+    background-color: #dbdbdb;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 0;
+    width: 360px;
+    height: 540px;
+    right: -100px;
+    top: -20px;
+    -moz-box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.6);
+    box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: all 500ms ease-out;
+    z-index: 10;
+  }
+  .moviecard .movie-poster:before {
+    content: '▸';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .moviecard .movie-poster:hover:before {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .moviecard.movie-view-trailer .movie-poster {
+    right: 600px;
+  }
+  .moviecard.movie-view-trailer #movie-content {
+    opacity: 0;
+    width: 0px;
+  }
+  .moviecard.movie-view-trailer .movie-trailer {
+    width: 100%;
+    opacity: 1;
+    padding-left: 300px;
+  }
+  .moviecard.movie-view-trailer .movie-trailer #youvideo {
+    height: 100%;
+  }
+
+  .row{
+    max-width: 1150px;
+  }
+  
+  /* #demo,#demo3{
+    margin-right: 61px;
+    margin-left: 20px;
+  } */
+  .r1{
+    margin-top: 20px;
+    box-shadow: 1px 1px 12px #555;
+    background: #fff;
+    border-radius: 20px;
+    /* padding: 15px; */
+  }
+
+  .boxpopup {
+    font-family: 'Helvetica', sans-serif, 'Ariel';
+    position: relative; 
+    background: #ffffff;
+    color: #555555;
+    
+    min-width: 900px;
+    min-height: 300px;
+    padding: 48px 42px 34px 20px;
+    -moz-box-shadow: -5px 5px 15px;
+    -webkit-box-shadow: -5px 5px 15px;
+    box-shadow: 1px 5px 15px;
+    border-radius: 5px;
+}
+
+.igs img{
+  width: 402px;
+  height: 310px;
+}
+.accur{
+  text-align: center;
+    line-height: 27px;
+    font-size: 21px;
+}
+
+.navbar-default {
+  background-color:transparent !important;
+  border-color: transparent !important;
+}
+#shad{
+  margin-left: 80px;
+}
+
+.mar {
+  margin: 15px auto 0;
+}
+
+
+.row {
+    max-width: 950px;
+    margin: 2px auto 0;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-left: 0px;
+}
